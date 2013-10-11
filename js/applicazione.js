@@ -66,22 +66,6 @@ function getit(database) {
 			
 	return risposta;
 }
-	
-function ultimeNews() {
-	$('.notizia').each(function() {
-		var numNotizia = this.id.split('n')
-		arrNotizie.push(numNotizia[1]);			
-	});
-	
-	$.each(arrNotizie, function( index, value ) {
-		// se inArray restituisce -1 non ha trovato la notizia fra quelle lette;
-		if ($.inArray(value, arrLette)==-1) {
-			$('#n' + value + ' .novita').css('display','block');
-		}
-		
-	});
-
-}
 /* FINE GESTIONE DATI LOCALI */
 
 // FUNZIONI di servizio
@@ -108,9 +92,10 @@ function shuffle(array) {
   return array;
 }
 
-function mostraCarte(titolo, idArg) {
+
+function mostraCarte(idArg) {
 	$('.pagina').css('display','none');	
-	$('#tavolocarte .header h4').html(titolo);
+	//$('.testata-argomento').css('background-image','url(img/ico1.png)');
 	
 	var hUnit = 0;
 	var hMain = 0;
@@ -127,7 +112,7 @@ function mostraCarte(titolo, idArg) {
 	var l3 = 0;
 	var l4 = 0;
 	var l5 = 0;
-	var scala = 1.8;
+	var scala = 1.86;
 	var colonne = 0;
 	var posizX = new Array();
 	var posizY = new Array();
@@ -135,7 +120,7 @@ function mostraCarte(titolo, idArg) {
 	var casualeIndex2 = new Array();
 		
 	hUnit = Math.ceil($(window).height()/14);
-	hMain = $(window).height() - hUnit*2 - 0;
+	hMain = $(window).height() - hUnit*1 - 0;
 	wMain = $(window).width();
 	
 	lArea = Math.floor(wMain*0.9);
@@ -212,7 +197,8 @@ function mostraCarte(titolo, idArg) {
 	hCarta = Math.floor(lCarta*scala); 
 			
 	$('#tavolocarte').css('display','block');	
-	$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': hUnit + 'px' , 'margin': Math.floor(wMain*0.05) + 'px ' + Math.floor(hMain*0.05) + 'px'});
+	//$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'margin': Math.floor(wMain*0.05) + 'px ' + Math.floor(hMain*0.05) + 'px'});
+	$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'left':Math.floor(wMain*0.05) + 'px'});
 	$('.carta').css({'width': lCarta + 'px','height': hCarta + 'px'});
 	
 	var cTop = 0;
@@ -248,11 +234,9 @@ function mostraCarte(titolo, idArg) {
 		
    	}
 	
-	//posizioni finali;	
-	for (i=0;i<22;i++) {
-		//$('#c' + casualeIndex1[i].toString()).css({'top': posizY[casualeIndex2[i]]  + 'px','left': posizX[casualeIndex2[i]] + 'px'});		
-	}	
 	
+	
+	$('.carta').css({top:hArea + 'px',left:Math.floor((lArea-lCarta)*0.5) + 'px'});
 	
 	function assegnaClick() {	
 		$('.carta').on('click',function(e){
@@ -277,31 +261,6 @@ function mostraCarte(titolo, idArg) {
 	
 	
 	carteDistribuite();
-}
-
-
-// FUNZIONE PRENOTA
-function prenota() {
-			
-	var hUnit = 0;
-	var hMain = 0;
-	hUnit = Math.ceil($(window).height()/14);
-	hMain = $(window).height() - hUnit*2 - 0;
-	
-	$('.back-home').css('width', 2*hUnit + 'px');
-	$('.back-home').click(function(){
-		$('.pagina').css('display','none');
-		$('#home').css('display','block');
-	});
-	
-	
-	$('.header').css({'height': hUnit *1 + 'px'});
-	$('.header h4').css({'line-height': hUnit*1 + 'px'});
-	$('#scheda').css({'position':'relative','top':hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
-	$('#chiamaOra').css({'height': hUnit *1 + 'px'});
-	$('.pagina').css('display','none');
-	$('#prenota').css('display','block');	
-	
 }
 
 
@@ -450,6 +409,50 @@ function notizia(numNot, IDNuova) {
 };
 
 
+function mescolaCarte(idArg) {
+	$('.pagina').css('display','none');	
+	//$('.testata-argomento').css('background-image','url(img/ico1.png)');
+	
+	var hUnit = 0;
+	var hMain = 0;
+	var lArea = 0;
+	var hArea = 0;
+	var lCarta = 0;
+	var hCarta = 0;
+	var scala = 1.86;
+		
+	hUnit = Math.ceil($(window).height()/14);
+	hMain = $(window).height() - hUnit*1 - 0;
+	wMain = $(window).width();
+	
+	lArea = Math.floor(wMain*0.9);
+	hArea = Math.floor(hMain*0.9);
+	
+	lCarta = Math.floor(Math.sqrt(wMain*0.9*0.25)); 
+	hCarta = Math.floor(lCarta*scala); 
+	$('#photos').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'left':Math.floor(wMain*0.05) + 'px'});	
+	$('#photos li').css({'width':6*lCarta + 'px','height': 6*hCarta + 'px'});		
+	$('#mescolacarte').css('display','block');	
+	
+	$('#photos').sphere3d({
+		elems: 'li',
+		scale: 0.95,
+		reveal: 2
+    });
+		
+	
+	$('#photos').on('click',function(e){
+		mostraCarte(idArg);		
+	});
+	
+	/*
+	setTimeout(function(){
+		mostraCarte(idArg);
+	}, 60000);
+	*/
+}
+
+
 // FUNZIONE AVVIO
 function appInizia() {
 	
@@ -460,15 +463,14 @@ function appInizia() {
 		var hUnit = 0;
 		var hMain = 0;
 		hUnit = Math.ceil($(window).height()/14);
-		hMain = $(window).height() - hUnit*2 - 0;
-		$('.header').css({'height': hUnit *1 + 'px'});
-		//$('#logo').css({'height': hUnit *2 + 'px', 'width':hUnit *2 + 'px'});
-		//$('#header').css({'background-size': 'auto ' + hUnit *2 + 'px'});
+		hMain = $(window).height() - hUnit;
+		$('.header').css({'height': hUnit + 'px'});
+		
 		$('.header h4').css({'line-height': hUnit*1 + 'px', 'font-size': hUnit*0.5 + 'px'});
-		$('#main').css({'top':  hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
-		$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/90) + 0 + 'px', 'height': Math.ceil(hMain*0.1) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain*0.05) + 'px', 'line-height': Math.ceil(hMain*0.1) + 'px'});
-		//$('#main .notizia').css({'height': Math.ceil(hMain/3) + 'px'});
-		$('.footer').css({'height': hUnit *1 + 'px'});
+		$('#main').css({'top':  hUnit + 'px', 'height': hMain + 'px'});
+		$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
+		
+		//$('.footer').css({'height': hUnit *1 + 'px'});
 		$('.pmenu').css({'height': hUnit + 'px'});
 		$('.pmenu h4').css({'line-height': hUnit + 'px'});		
 		
@@ -476,7 +478,7 @@ function appInizia() {
 		$('#home').css('display','block');
 		
 		$('.argomento').click(function(){
-			mostraCarte($(this).html(), $(this).attr('id'));
+			mescolaCarte($(this).attr('id'));
 		});
 	
 					
