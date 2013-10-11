@@ -213,7 +213,7 @@ function mostraCarte(idArg) {
 		casualeIndex2.push(i);
 		posizX.push(cLeft*lCarta);
 		posizY.push(cTop*hCarta);
-		$('#c' + i.toString() + ' .dorso').html((i+1).toString());
+		$('#c' + i.toString() + ' .dorso').html('<div class="temp">' + (i+1).toString() + '</div>');
 		cLeft++;
 		
 	}
@@ -263,69 +263,6 @@ function mostraCarte(idArg) {
 	carteDistribuite();
 }
 
-
-
-// FUNZIONE GALLERY
-function gallery() {
-	
-	var urlJsonpG = 'http://www.massimoabbondi.it/apps/pandino/data/gallery.php';
-	
-	function jsonpCallback(response){
-		$('#galleria .swiper-wrapper').append(response);
-		var hUnit = 0;
-		var hMain = 0;
-		hUnit = Math.ceil($(window).height()/14);
-		hMain = $(window).height() - hUnit*1 - 0;
-		
-		$('.back-home').css('width', 2*hUnit + 'px');
-		$('.back-home').click(function(){
-			$('.pagina').css('display','none');
-			$('#home').css('display','block');
-			
-		});
-		
-		
-		$('.header').css({'height': hUnit *1 + 'px'});
-		$('.header h4').css({'line-height': hUnit*1 + 'px'});
-		$('#galleria').css({'top':  hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
-		$('.centratoVert ').css({'height': hMain + 'px'});
-		//$('#galleria .immagine').css({'height': Math.ceil(hMain/3) + 'px'});
-		
-		
-		$('.pagina').css('display','none');
-		$('#gallery').css('display','block');
-
-		$('.centratoVert img').each(function() {				
-			var altezza = $(this).height();
-			//alert(altezza);
-			if (altezza<hMain) {
-				$(this).css({'top': Math.floor((hMain-altezza)*0.5) + 'px'});
-			}
-		});
-	
-		
-		var mySwiperG = new Swiper('#galleria',{
-			mousewheelControl: true,
-			slidesPerView: 1,
-			slidesPerGroup:1,
-			mode:'vertical',
-			
-
-		});	
-				
-		
-	}
-	
-	$.ajax({
-		url: urlJsonpG,
-		dataType: 'jsonp',
-		error: function(xhr, status, error) {
-				//alert(error);
-				},
-		success: jsonpCallback			
-	});
-	
-};
 
 // FUNZIONE SU CLICK NOTIZIA
 function notizia(numNot, IDNuova) {
