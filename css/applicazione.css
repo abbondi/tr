@@ -515,12 +515,22 @@ body {
 	height: 100%;
 }
 /* CARTE ANIMATE FINE */
+
+.leggi {
+	position:absolute;
+	display:none;
+	background:url(../img/leggi.png) no-repeat;
+	background-size: auto 100%;
+	background-position: center center;
+	
+	
+}
 	
 .temp {
 	position: absolute;
 	top: 10px;
 	left:10px;
-	padding:10px;
+	padding:4px;
 	color:#fff;
 	background:#f00;
 		

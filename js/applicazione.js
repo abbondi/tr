@@ -254,7 +254,14 @@ function mostraCarte(idArg) {
 				$('#' + cartaScelta).css('z-index','2');			
 				$('#' + cartaScelta + ' .fronte').stop().animate({width:Math.ceil(lCartaBig*1) + 'px',height:Math.ceil(hCartaBig*1) + 'px'},{duration:300});
 				$('#' + cartaScelta).stop().animate({top:0,left:0,width:lCartaBig + 'px',height:hCartaBig + 'px', marginLeft:lftMrgCartaBig+'px',marginTop:topMrgCartaBig+'px'},{duration:300});
-			}, 600);			
+			}, 600);	
+			
+			setTimeout(function(){
+				$('#' + cartaScelta + ' .fronte').html('<div class="leggi"></div>');
+				$('#' + cartaScelta + ' .fronte .leggi').css({'width':'100%','height':Math.ceil(hCartaBig*0.08) + 'px','bottom':Math.ceil(hCartaBig*0.06) + 'px','display':'block'});
+				//$('#' + cartaScelta + ' .fronte').html('<div class="leggi"></div>');
+				
+			}, 1000);		
 			
 		});
 	}
@@ -379,6 +386,7 @@ function mescolaCarte(idArg) {
 		
 	
 	$('#photos').on('click',function(e){
+		$('#photos').sphere3d( false );
 		mostraCarte(idArg);		
 	});
 	
