@@ -291,8 +291,27 @@ body {
 	position:absolute;
 	width:90%;
 	height:90%;
-	background: url(../img/dorso.png) no-repeat;
-	background-size: 100% 100%;
+	background: url(../img/dorso.png) 0 0 no-repeat;
+	background-size: 100% 200%;
+	border:none;
+}
+
+.dorsoClick {
+	position:absolute;
+	width:90%;
+	height:90%;
+	background: url(../img/dorso.png) 0 0 no-repeat;
+	background-size: 100% 200%;
+	border:none;
+	cursor:pointer;
+}
+
+.dorsoClick:hover {
+	position:absolute;
+	width:90%;
+	height:90%;
+	background: url(../img/dorso.png) 0 100% no-repeat;
+	background-size: 100% 200%;
 	border:none;
 }
 
@@ -413,38 +432,6 @@ body {
 	font-weight:normal;	
 }
 
-#chiamaOra {
-	position:absolute;
-	bottom:0;
-	left:0;
-	right:0;
-	background:#000; 
-}
-
-#chiamaOra a:link {
-	color:#fff;
-	text-decoration:none;
-}
-
-#scheda {
-	display: table;
-	width:100%;
-	background: #baaca6 url(../img/sf-pandino.png) center center no-repeat;
-	background-size:80% auto;
-}
-
-#scheda .cella {
-	width:100%;
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
-	font-size:2em;
-}
-
-#scheda .cella a:link{
-	color:#99042f;
-	text-decoration:none;	
-}
 
 .novita {
 	position:absolute;
@@ -519,19 +506,58 @@ body {
 .leggi {
 	position:absolute;
 	display:none;
-	background:url(../img/leggi.png) no-repeat;
-	background-size: auto 100%;
-	background-position: center center;
+	background:url(../img/leggi.png) center 0 no-repeat;
+	background-size: auto 200%;
+	/*background-position: center center;*/
+	cursor:pointer;
 	
 	
 }
+
+.leggi:hover {
+	position:absolute;
+	display:none;
+	background:url(../img/leggi.png) center 100% no-repeat;
+	background-size: auto 200%;
+	/*background-position: center center;*/
+}
 	
-.temp {
+.ncarta {
 	position: absolute;
 	top: 10px;
 	left:10px;
-	padding:4px;
+	padding:2px;
+	font-size:10px;
 	color:#fff;
-	background:#f00;
+	background:#000;
 		
+}
+
+#oracolo {
+	position:absolute;
+	width:100%;
+	height:100%;
+	border:none;
+	
+}
+
+
+.back-home {
+	position:absolute;
+	height:100%;
+	width:auto;
+	background: url(../img/back.png) center center no-repeat;
+	background-size:100% 100%;
+	cursor:pointer;
+	z-index:999;
+}
+
+#pergamena{position:relative;background:url(../img/pergamena.png) no-repeat;background-size:100% 100%;}
+.swiper-container{position:relative;top:15%;height:70%;width:80%;margin:15% auto;}
+.slide-inner{padding:20px;color:#333;width:auto;}
+.swiper-scrollbar{background:rgba(0,0,0,0.3);;position:absolute;right:3px;top:0;height:100%;width:2px;}
+.swiper-scrollbar .swiper-scrollbar-drag{background:rgba(0,0,0,0.6);}
+.slider-inner img{
+	width:100%;
+	height:auto;
 }

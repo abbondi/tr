@@ -92,6 +92,82 @@ function shuffle(array) {
   return array;
 }
 
+function mostraOracolo(idArg, cartaScelta) {
+	//alert('cliccato ' + idArg + ', ' + cartaScelta);
+	var urlJsonpN = 'http://www.massimoabbondi.it/apps/zoit/data/oracolo.php';
+	
+	
+	function jsonpCallback(response){
+		
+		//alert(response);
+		var hUnit = 0;
+		var hMain = 0;
+		var hCartaBig = 0;
+		var lCartaBig = 0;
+		var topMrgCartaBig = 0;
+		var lftMrgCartaBig = 0;
+		var scala = 1.38;
+	
+		hUnit = Math.ceil($(window).height()/14);
+		hMain = $(window).height() - hUnit;
+		wMain = $(window).width();
+		lArea = Math.floor(wMain*1);
+		hArea = Math.floor(hMain*1 - hUnit*2);
+		
+		if (lArea*scala<hArea) {
+			hCartaBig = Math.floor(lArea*scala);
+			lCartaBig = lArea;
+			topMrgCartaBig = Math.floor((hArea - lArea*scala)*0.5);
+			lftMrgCartaBig = 0;
+		} else {
+			hCartaBig = hArea;
+			lCartaBig = Math.floor(hArea/scala);
+			topMrgCartaBig = 0;
+			lftMrgCartaBig = Math.floor((lArea - hArea/scala)*0.5);		
+		}
+	
+		$('#pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
+			
+		$('#pergamena .slide-inner').html(response);
+		$('#pergamena .slide-inner img').css('width','100%');		
+		
+		$('.back-home').css('width', 2*hUnit + 'px');
+		$('.pagina').css('display','none');
+		$('#oracolo').css('display','block');
+		
+				
+		// inizio codice swipe e scroll pages
+		var mySwiper = new Swiper('.swiper-container', {
+			scrollContainer:true,
+			mousewheelControl : true,
+			mode:'vertical',
+			//Enable Scrollbar
+			scrollbar: {
+				container :'.swiper-scrollbar',
+				hide: true,
+				draggable: false  
+			}
+		});
+		//inizializza Pagine
+		
+		// fine codice swipe e scroll pages	
+		
+		$('.back-home').click(function(){
+			window.location.href = 'index.html';
+		});		
+											
+	}
+	
+	$.ajax({
+		url: urlJsonpN,
+		dataType: 'jsonp',
+		data: { Argomento: idArg, CodC: cartaScelta },
+		error: function(xhr, status, error) {
+				//alert(error);
+				},
+		success: jsonpCallback			
+	});
+}
 
 function mostraCarte(idArg) {
 	$('.pagina').css('display','none');	
@@ -126,7 +202,7 @@ function mostraCarte(idArg) {
 	lArea = Math.floor(wMain*0.9);
 	hArea = Math.floor(hMain*0.9);
 	
-	if (lArea*1.8<hArea) {
+	if (lArea*scala<hArea) {
 		hCartaBig = Math.floor(lArea*scala);
 		lCartaBig = lArea;
 		topMrgCartaBig = Math.floor((hArea - lArea*scala)*0.5);
@@ -213,7 +289,10 @@ function mostraCarte(idArg) {
 		casualeIndex2.push(i);
 		posizX.push(cLeft*lCarta);
 		posizY.push(cTop*hCarta);
-		$('#c' + i.toString() + ' .dorso').html('<div class="temp">' + (i+1).toString() + '</div>');
+		$('#c' + i.toString() + ' .dorso').html('<div class="ncarta">' + (i+1).toString() + '</div>');
+		if (i==2) {
+			$('#c' + i.toString() + ' .dorso .ncarta').css('background-color','#f00');
+		}
 		cLeft++;
 		
 	}
@@ -229,6 +308,7 @@ function mostraCarte(idArg) {
 		if (indexDistr<22) {
 			$('#c' + casualeIndex1[indexDistr].toString()).animate({'top': posizY[casualeIndex2[indexDistr]]  + 'px','left': posizX[casualeIndex2[indexDistr]] + 'px'}, { duration: 200, easing: "linear", complete: carteDistribuite });
 		} else {
+			$('.dorso').addClass('dorsoClick');
 			assegnaClick();	
 		}
 		
@@ -259,7 +339,10 @@ function mostraCarte(idArg) {
 			setTimeout(function(){
 				$('#' + cartaScelta + ' .fronte').html('<div class="leggi"></div>');
 				$('#' + cartaScelta + ' .fronte .leggi').css({'width':'100%','height':Math.ceil(hCartaBig*0.08) + 'px','bottom':Math.ceil(hCartaBig*0.06) + 'px','display':'block'});
-				//$('#' + cartaScelta + ' .fronte').html('<div class="leggi"></div>');
+				$('#' + cartaScelta + ' .fronte .leggi').on('click',function(e){					
+					mostraOracolo(idArg,cartaScelta);
+				});
+				
 				
 			}, 1000);		
 			
@@ -269,89 +352,6 @@ function mostraCarte(idArg) {
 	
 	carteDistribuite();
 }
-
-
-// FUNZIONE SU CLICK NOTIZIA
-function notizia(numNot, IDNuova) {
-	
-	var urlJsonpN = 'http://www.massimoabbondi.it/apps/pandino/data/notizia.php';
-	
-	
-	function jsonpCallback(response){
-		$('#flussoNotizie').html(response);
-		
-		var hUnit = 0;
-		var hMain = 0;
-		hUnit = Math.ceil($(window).height()/14);
-		hMain = $(window).height() - hUnit*1 - 0;
-		
-		$('.back-home').css('width', 2*hUnit + 'px');
-		$('.back-home').click(function(){
-			$('.pagina').css('display','none');
-			$('#home').css('display','block');
-			
-		});
-		
-		$('.pagina').css('display','none');
-		$('#notizia').css('display','block');
-		
-				
-		// inizio codice swipe e scroll pages
-		$('.swiper-pages').css({
-			'height': hMain + 'px',
-			'top': hUnit + 'px'
-			
-		});
-		
-		//inizializza Pagine
-		var pages = $('.swiper-pages').swiper();
-	
-		//Scroll Containers
-		$('.scroll-container').each(function(){
-			$(this).swiper({
-				mode:'vertical',
-				scrollContainer: true,
-				mousewheelControl: true,
-				scrollbar: {
-					container:$(this).find('.swiper-scrollbar')[0]
-				}
-			})
-		});
-		
-		var mySwiperN = new Swiper('.swiper-pages', { 
-			speed:750, 
-			mode:'horizontal',
-			initialSlide:numNot
-		});				
-		// fine codice swipe e scroll pages
-		
-		// se la notizia è nuova, tolgo il segno di notifica dall'elenco in home visto che l'ho appena cliccata;
-		$('#n' + IDNuova + ' .novita').css('display','none');
-		if ($.inArray(IDNuova, arrLette)==-1) {
-			// se ho già dieci elementi rimuovo il più vecchio;
-			if(arrLette.length>9) {
-				arrLette.splice(0,1);
-			}
-			arrLette.push(IDNuova);
-			//setCookie('mieLetture',arrLette.toString() ,30);
-			setit('mieLetture',arrLette.toString());
-		}
-			
-											
-	}
-	
-	$.ajax({
-		url: urlJsonpN,
-		dataType: 'jsonp',
-		data: { IDNotizia: numNot, location: 'notizia' },
-		error: function(xhr, status, error) {
-				//alert(error);
-				},
-		success: jsonpCallback			
-	});
-	
-};
-
 
 function mescolaCarte(idArg) {
 	$('.pagina').css('display','none');	
@@ -400,44 +400,32 @@ function mescolaCarte(idArg) {
 
 // FUNZIONE AVVIO
 function appInizia() {
+
+	var hUnit = 0;
+	var hMain = 0;
+	hUnit = Math.ceil($(window).height()/14);
+	hMain = $(window).height() - hUnit;
+	$('.header').css({'height': hUnit + 'px'});
 	
-	var urlJsonp = 'http://www.massimoabbondi.it/apps/pandino/data/home.php';
+	$('.header h4').css({'line-height': hUnit*1 + 'px', 'font-size': hUnit*0.5 + 'px'});
+	$('#main').css({'top':  hUnit + 'px', 'height': hMain + 'px'});
+	$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
 	
-	function jsonpCallback(response){
-		//$('#main .swiper-wrapper').append(response);
-		var hUnit = 0;
-		var hMain = 0;
-		hUnit = Math.ceil($(window).height()/14);
-		hMain = $(window).height() - hUnit;
-		$('.header').css({'height': hUnit + 'px'});
-		
-		$('.header h4').css({'line-height': hUnit*1 + 'px', 'font-size': hUnit*0.5 + 'px'});
-		$('#main').css({'top':  hUnit + 'px', 'height': hMain + 'px'});
-		$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
-		
-		//$('.footer').css({'height': hUnit *1 + 'px'});
-		$('.pmenu').css({'height': hUnit + 'px'});
-		$('.pmenu h4').css({'line-height': hUnit + 'px'});		
-		
-		$('#sfondo').css('display','none');
-		$('#home').css('display','block');
-		
-		$('.argomento').click(function(){
-			mescolaCarte($(this).attr('id'));
-		});
+	//$('.footer').css({'height': hUnit *1 + 'px'});
+	$('.pmenu').css({'height': hUnit + 'px'});
+	$('.pmenu h4').css({'line-height': hUnit + 'px'});		
 	
-					
-		
-	}
+	$('#sfondo').css('display','none');
+	$('#home').css('display','block');
 	
-	$.ajax({
-		url: urlJsonp,
-		dataType: 'jsonp',
-		error: function(xhr, status, error) {
-				//alert(error);
-				},
-		success: jsonpCallback			
+	$('.argomento').click(function(){
+		mescolaCarte($(this).attr('id'));
 	});
+	
+	$('.consiglio').click(function(){
+		mostraOracolo('A1','cdg');
+	});	
+	
 	
 };
 
