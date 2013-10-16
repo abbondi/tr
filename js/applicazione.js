@@ -394,6 +394,7 @@ function mescolaCarte(idArg) {
 		
 	
 	var intervalloMsc=setTimeout(function(){
+		$('#photos').sphere3d( false );
 		mostraCarte(idArg);
 	}, 3000);
 	
