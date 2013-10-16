@@ -65,8 +65,8 @@
       options = $.extend( true, {}, defaults, opts ),
       elems = options.elems && that.find( options.elems ),
       rotation = options.rotation,
-      elems_opacity = options.elems_opacity,
-      noclick_opacity = options.noclick_opacity,
+      elems_opacity = 1, 
+      noclick_opacity = 1,
       reveal = options.reveal,
       base_zindex = options.base_zindex,
       points,
@@ -78,7 +78,9 @@
       // A few CSS-related items.
       opacity_reveal = reveal > 0.5 ? 0.5 : reveal,
       opacity_offset = reveal > 0.5 ? 1 - noclick_opacity : 0,
-      //background_color = get_background_color( that ),
+     
+	 
+	  //background_color = get_background_color( that ),
       imp = '!important;',
       noclick_css = [
         

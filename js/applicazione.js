@@ -131,7 +131,8 @@ function mostraOracolo(idArg, cartaScelta) {
 		$('#pergamena .slide-inner').html(response);
 		$('#pergamena .slide-inner img').css('width','100%');		
 		
-		$('.back-home').css('width', 2*hUnit + 'px');
+		$('.back-center').css('width', 2*hUnit + 'px');
+		$('.footer').css({'height': hUnit *1 + 'px'});
 		$('.pagina').css('display','none');
 		$('#oracolo').css('display','block');
 		
@@ -152,7 +153,7 @@ function mostraOracolo(idArg, cartaScelta) {
 		
 		// fine codice swipe e scroll pages	
 		
-		$('.back-home').click(function(){
+		$('.back-center').click(function(){
 			window.location.href = 'index.html';
 		});		
 											
@@ -271,10 +272,12 @@ function mostraCarte(idArg) {
 	}
 	
 	hCarta = Math.floor(lCarta*scala); 
+	
+	lftMrgCartaBig -= Math.floor((lArea - (lCarta*colonne - lCarta*0.1))*0.5);
 			
 	$('#tavolocarte').css('display','block');	
 	//$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'margin': Math.floor(wMain*0.05) + 'px ' + Math.floor(hMain*0.05) + 'px'});
-	$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'left':Math.floor(wMain*0.05) + 'px'});
+	$('#areacarte').css({'width':lArea + 'px','height': hArea + 'px', 'top': 2*hUnit + 'px' , 'left':Math.floor(wMain*0.05 + (lArea - (lCarta*colonne - lCarta*0.1))*0.5) + 'px'});
 	$('.carta').css({'width': lCarta + 'px','height': hCarta + 'px'});
 	
 	var cTop = 0;
@@ -318,7 +321,12 @@ function mostraCarte(idArg) {
 	
 	$('.carta').css({top:hArea + 'px',left:Math.floor((lArea-lCarta)*0.5) + 'px'});
 	
-	function assegnaClick() {	
+	function assegnaClick() {
+		$('.back-home').css('width', 2*hUnit + 'px');
+		$('.back-home').click(function(){
+			window.location.href = 'index.html';
+		});	
+			
 		$('.carta').on('click',function(e){
 			$('.carta').unbind('click');
 			var cartaScelta = $(this).attr('id');
@@ -380,21 +388,23 @@ function mescolaCarte(idArg) {
 	
 	$('#photos').sphere3d({
 		elems: 'li',
-		scale: 0.95,
+		scale: 1,
 		reveal: 2
     });
 		
 	
+	var intervalloMsc=setTimeout(function(){
+		mostraCarte(idArg);
+	}, 3000);
+	
+	
 	$('#photos').on('click',function(e){
+		clearTimeout(intervalloMsc);
 		$('#photos').sphere3d( false );
 		mostraCarte(idArg);		
 	});
 	
-	/*
-	setTimeout(function(){
-		mostraCarte(idArg);
-	}, 60000);
-	*/
+	
 }
 
 
@@ -412,8 +422,8 @@ function appInizia() {
 	$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
 	
 	//$('.footer').css({'height': hUnit *1 + 'px'});
-	$('.pmenu').css({'height': hUnit + 'px'});
-	$('.pmenu h4').css({'line-height': hUnit + 'px'});		
+	//$('.pmenu').css({'height': hUnit + 'px'});
+	//$('.pmenu h4').css({'line-height': hUnit + 'px'});		
 	
 	$('#sfondo').css('display','none');
 	$('#home').css('display','block');

@@ -232,39 +232,12 @@ body {
 	bottom:0;
 	left:0;
 	right:0;
-	background:#000; 
-}
-
-.pmenu {
-	position:relative;
-	background: #000 url(../img/btnZZZ.png) repeat-x;
-	color:#fff;
-	cursor:pointer;
-	/* IE10 Consumer Preview */ 
-
-}
-
-.pmenu:hover {			
-	background: #203943 url(../img/btn-hoverZZZ.png) repeat-x;			
-}
-
-.pmenu h4 {
-	margin:0 auto;
-	text-align:center;			
-}
-.back-home {
-	position:absolute;
-	height:100%;
-	width:auto;
-	background: url(../img/back.png) center center no-repeat;
-	background-size:100% 100%;
-	cursor:pointer;
+	background: #000 url(../img/btn.png) repeat-x;
 }
 
 #areacarte {
 	position:absolute;
 	border:none;
-	
 }
 
 .carta {
@@ -414,25 +387,6 @@ body {
 	overflow:hidden;
 }
 
-.mappaOff {
-	background: #333 url(../img/mappa.jpg) center center no-repeat;
-	background-size:100% auto;
-}
-
-#indicazioni {
-	position:absolute;
-	bottom:0;
-	left:0;
-	right:0;
-	background:#000; 
-}
-
-#indicazioni .pmenu h4 {
-	font-size:0.8em;
-	font-weight:normal;	
-}
-
-
 .novita {
 	position:absolute;
 	width:100%;
@@ -459,7 +413,7 @@ body {
 	width: 696px;
 	height: 523px;
 	background: none;
-	}
+}
 
 #photos ul {
 	list-style: none;
@@ -552,11 +506,22 @@ body {
 	z-index:999;
 }
 
+.back-center {
+	position:relative;
+	margin:0 auto;
+	height:100%;
+	width:auto;
+	background: url(../img/back-center.png) center center no-repeat;
+	background-size:100% 100%;
+	cursor:pointer;
+	z-index:999;
+}
+
 #pergamena{position:relative;background:url(../img/pergamena.png) no-repeat;background-size:100% 100%;}
 .swiper-container{position:relative;top:15%;height:70%;width:80%;margin:15% auto;}
 .slide-inner{padding:20px;color:#333;width:auto;}
-.swiper-scrollbar{background:rgba(0,0,0,0.3);;position:absolute;right:3px;top:0;height:100%;width:2px;}
-.swiper-scrollbar .swiper-scrollbar-drag{background:rgba(0,0,0,0.6);}
+.swiper-scrollbar{background:#f6e6b6;position:absolute;right:3px;top:0;height:100%;width:2px;}
+.swiper-scrollbar .swiper-scrollbar-drag{background:#9b8b6d;}
 .slider-inner img{
 	width:100%;
 	height:auto;
