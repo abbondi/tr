@@ -331,7 +331,7 @@ function mostraCarte(idArg) {
 			$('.carta').unbind('click');
 			var cartaScelta = $(this).attr('id');
 			$('#' + $(this).attr('id') + ' .dorso').stop().animate({width:'0px',marginLeft:''+ Math.floor(lCarta*0.9*0.5) +'px'},{duration:300});
-			$('#' + cartaScelta + ' .fronte').css({'margin-left':Math.floor(lCarta*0.9*0.5) + 'px','background-image':'url(img/' + cartaScelta + '.png)'});
+			$('#' + cartaScelta + ' .fronte').css({'margin-left':Math.floor(lCarta*0.9*0.5) + 'px','background-image':'url(img/' + cartaScelta + '.jpg)'});
 			$('#' + cartaScelta).addClass('cartaScelta').removeClass('carta');
 			setTimeout(function(){
 				$('#' + cartaScelta + ' .fronte').stop().animate({width:Math.ceil(lCarta*0.9) + 'px',marginLeft:'0px'},{duration:300});
@@ -394,7 +394,8 @@ function mescolaCarte(idArg) {
 		
 	
 	var intervalloMsc=setTimeout(function(){
-		$('#photos').sphere3d( false );
+		clearTimeout(intervalloMsc);
+		$('#photos').sphere3d( false );		
 		mostraCarte(idArg);
 	}, 3000);
 	

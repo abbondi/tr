@@ -1,15 +1,5 @@
 @charset "UTF-8";
 /* CSS Document */
-@font-face {
-    font-family: 'gothic_ultra_otregular';
-    src: url('font/gothic_ultra_ot-webfont.eot');
-    src: url('font/gothic_ultra_ot-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/gothic_ultra_ot-webfont.woff') format('woff'),
-         url('font/gothic_ultra_ot-webfont.ttf') format('truetype'),
-         url('font/gothic_ultra_ot-webfont.svg#gothic_ultra_otregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body {
 	width: 100%;
@@ -77,7 +67,7 @@ body {
 	top:0;
 	left:0;
 	right:0;
-	background: #000 url(../img/btn.png) repeat-x;
+	background: #000 url(../img/barra.png) repeat-x;
 }
 		
 .header h4{
@@ -232,7 +222,7 @@ body {
 	bottom:0;
 	left:0;
 	right:0;
-	background: #000 url(../img/btn.png) repeat-x;
+	background: #000 url(../img/barra.png) repeat-x;
 }
 
 #areacarte {
