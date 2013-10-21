@@ -48,7 +48,7 @@
 	<icon src="res/icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 		
 	<!-- SPLASH SCREENS --> 
-	<gap:splash src="splash.jpg" />	
+	<gap:splash src="splash.png" />	
 	<gap:splash src="res/splash/android/ldpi.jpg" 						gap:platform="android" gap:density="ldpi" />
 	<gap:splash src="res/splash/android/mdpi.jpg" 						gap:platform="android" gap:density="mdpi" />
 	<gap:splash src="res/splash/android/hdpi.jpg" 						gap:platform="android" gap:density="hdpi" />
