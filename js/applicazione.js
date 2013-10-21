@@ -1,5 +1,5 @@
 // JavaScript Document
-
+var percorsoCarte = "http://www.massimoabbondi.it/apps/zoit/data/arcani/";
 /* GESTIONE COOKIE */
 function getCookie(c_name)
 {
@@ -330,18 +330,21 @@ function mostraCarte(idArg) {
 		$('.carta').on('click',function(e){
 			$('.carta').unbind('click');
 			var cartaScelta = $(this).attr('id');
-			$('#' + $(this).attr('id') + ' .dorso').stop().animate({width:'0px',marginLeft:''+ Math.floor(lCarta*0.9*0.5) +'px'},{duration:300});
-			$('#' + cartaScelta + ' .fronte').css({'margin-left':Math.floor(lCarta*0.9*0.5) + 'px','background-image':'url(img/' + cartaScelta + '.jpg)'});
+			//$('#' + $(this).attr('id') + ' .dorso').stop().animate({width:'0px',marginLeft:''+ Math.floor(lCarta*0.9*0.5) +'px'},{duration:300});
+			$('#' + cartaScelta).css('z-index','2');
+			$('#' + cartaScelta + ' .dorso').stop().animate({width:Math.ceil(lCartaBig*1) + 'px',height:Math.ceil(hCartaBig*1) + 'px'},{duration:300});
+			$('#' + cartaScelta).stop().animate({top:0,left:0,width:lCartaBig + 'px',height:hCartaBig + 'px', marginLeft:lftMrgCartaBig+'px',marginTop:topMrgCartaBig+'px'},{duration:300});			
+			$('#' + cartaScelta + ' .fronte').css({'margin-left':Math.floor(lCartaBig*0.5) + 'px', 'height':Math.ceil(hCartaBig*1) + 'px',  'background-image':'url(' + percorsoCarte + cartaScelta + '.png)'});
 			$('#' + cartaScelta).addClass('cartaScelta').removeClass('carta');
 			setTimeout(function(){
-				$('#' + cartaScelta + ' .fronte').stop().animate({width:Math.ceil(lCarta*0.9) + 'px',marginLeft:'0px'},{duration:300});
+				$('#' + cartaScelta + ' .dorso').stop().animate({width:'0px',marginLeft:Math.floor(lCartaBig*0.5) + 'px'},{duration:300});
 			}, 300);
 			
 			setTimeout(function(){
 				$('.carta').stop().animate({opacity:0},{duration:300});
-				$('#' + cartaScelta).css('z-index','2');			
-				$('#' + cartaScelta + ' .fronte').stop().animate({width:Math.ceil(lCartaBig*1) + 'px',height:Math.ceil(hCartaBig*1) + 'px'},{duration:300});
-				$('#' + cartaScelta).stop().animate({top:0,left:0,width:lCartaBig + 'px',height:hCartaBig + 'px', marginLeft:lftMrgCartaBig+'px',marginTop:topMrgCartaBig+'px'},{duration:300});
+				//$('#' + cartaScelta).css('z-index','2');			
+				$('#' + cartaScelta + ' .fronte').stop().animate({width:Math.ceil(lCartaBig*1) + 'px', marginLeft:'0px'},{duration:300});
+				//$('#' + cartaScelta).stop().animate({top:0,left:0,width:lCartaBig + 'px',height:hCartaBig + 'px', marginLeft:lftMrgCartaBig+'px',marginTop:topMrgCartaBig+'px'},{duration:300});
 			}, 600);	
 			
 			setTimeout(function(){
