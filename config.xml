@@ -49,10 +49,10 @@
 		
 	<!-- SPLASH SCREENS --> 
 	<gap:splash src="splash.png" />	
-	<gap:splash src="res/splash/android/ldpi.png" 						gap:platform="android" gap:density="ldpi" />
-	<gap:splash src="res/splash/android/mdpi.png" 						gap:platform="android" gap:density="mdpi" />
-	<gap:splash src="res/splash/android/hdpi.png" 						gap:platform="android" gap:density="hdpi" />
-	<gap:splash src="res/splash/android/xhdpi.png" 						gap:platform="android" gap:density="xhdpi" />	
+	<gap:splash src="res/splash/android/ldpi.jpg" 						gap:platform="android" gap:density="ldpi" />
+	<gap:splash src="res/splash/android/mdpi.jpg" 						gap:platform="android" gap:density="mdpi" />
+	<gap:splash src="res/splash/android/hdpi.jpg" 						gap:platform="android" gap:density="hdpi" />
+	<gap:splash src="res/splash/android/xhdpi.jpg" 						gap:platform="android" gap:density="xhdpi" />	
 	<gap:splash src="res/splash/ios/Default.png" 						gap:platform="ios" width="320" height="480" />
 	<gap:splash src="res/splash/ios/Default_at_2x.png" 					gap:platform="ios" width="640" height="960" />
 	<gap:splash src="res/splash/ios/Default_iphone5.png" 				gap:platform="ios" width="640" height="1136" />
