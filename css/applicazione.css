@@ -10,6 +10,29 @@ body {
 	background:#000;		            
 }
 
+#anteprima {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:block;
+	background:url(../img/cielo.jpg) no-repeat;
+	background-size:100% 100%;
+	background-position:center center;
+	text-align:center;
+}
+
+#anteprima img {
+	height:100%;
+	width:auto;
+	margin:auto;		
+}
+
+
 #sfondo {
 	position:absolute;
 	top:0;
@@ -24,7 +47,7 @@ body {
 }
 
 .loader {
-	background:#000 url(../img/loader.gif) center center no-repeat;
+	background:url(../img/loader.gif) center center no-repeat;
 }
 
 .errore {
@@ -507,9 +530,11 @@ body {
 	cursor:pointer;
 	z-index:999;
 }
-
-#pergamena{position:relative;background:url(../img/pergamena.png) no-repeat;background-size:100% 100%;}
-.swiper-container{position:relative;top:15%;height:70%;width:80%;margin:15% auto;}
+#contenitore-pergamena{position:relative;}
+#pergamena{position:relative;width:100%;height:100%;background:url(../img/pergamena.png) no-repeat;background-size:100% 100%;}
+#pergamena-sup{position:absolute;width:100%;height:5%;background:url(../img/pergamena-sup.png) no-repeat;background-size:100% 100%;z-index:999999;}
+#pergamena-inf{position:absolute;width:100%;height:5%;background:url(../img/pergamena-inf.png) no-repeat;background-size:100% 100%;z-index:999999;}
+.swiper-container{position:relative;top:5%;height:90%;width:80%;margin:15% auto;border:none}
 .slide-inner{padding:20px;color:#333;width:auto;}
 .swiper-scrollbar{background:#f6e6b6;position:absolute;right:3px;top:0;height:100%;width:2px;}
 .swiper-scrollbar .swiper-scrollbar-drag{background:#9b8b6d;}

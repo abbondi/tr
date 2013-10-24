@@ -35,6 +35,7 @@
     <preference name="prerendered-icon" value="true" /> <!-- non applica effetto gloss all'icona -->
     <preference name="stay-in-webview" value="true" /> <!-- if set to true, all links (even with target set to blank) will open in the app's webview -->
     <preference name="exit-on-suspend" value="false" /> <!-- if set to false, app will continue to run on suspend -->
+	<preference name="detect-data-types" value="false" />
     
 	<!-- ICONS -->    
     <icon src="icon.png" />

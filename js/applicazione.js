@@ -126,9 +126,10 @@ function mostraOracolo(idArg, cartaScelta) {
 			lftMrgCartaBig = Math.floor((lArea - hArea/scala)*0.5);		
 		}
 	
-		$('#pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
+		$('#contenitore-pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
+		//$('#pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
 			
-		$('#pergamena .slide-inner').html(response);
+		$('#pergamena .slide-inner').html(response + '<p>&nbsp;</p><p>&nbsp;</p>');
 		$('#pergamena .slide-inner img').css('width','100%');		
 		
 		$('.back-center').css('width', 2*hUnit + 'px');
@@ -152,7 +153,8 @@ function mostraOracolo(idArg, cartaScelta) {
 		//inizializza Pagine
 		
 		// fine codice swipe e scroll pages	
-		
+		$('#pergamena-sup').css({'top':'0px','height':Math.ceil(hCartaBig/788*65) + 'px'});
+		$('#pergamena-inf').css({'bottom':'0px','height':Math.ceil(hCartaBig/788*68) + 'px'});
 		$('.back-center').click(function(){
 			window.location.href = 'index.html';
 		});		
@@ -300,6 +302,28 @@ function mostraCarte(idArg) {
 		
 	}
 	
+	if (colonne==3) {
+		posizX[21] +=lCarta;
+	} else if (colonne==4) {
+		posizX[20] +=lCarta;
+		posizX[21] +=lCarta;		
+	} else if (colonne==5) {
+		posizX[20] +=lCarta*1.5;
+		posizX[21] +=lCarta*1.5;		
+	} else if (colonne==6) {
+		posizX[18] +=lCarta;
+		posizX[19] +=lCarta;
+		posizX[20] +=lCarta;
+		posizX[21] +=lCarta;
+	} else if (colonne==8) {
+		posizX[16] +=lCarta;
+		posizX[17] +=lCarta;
+		posizX[18] +=lCarta;
+		posizX[19] +=lCarta;
+		posizX[20] +=lCarta;
+		posizX[21] +=lCarta;		
+	}
+	
 	shuffle(casualeIndex1);
 	shuffle(casualeIndex2);
 	
@@ -309,7 +333,7 @@ function mostraCarte(idArg) {
 	function carteDistribuite() {
 		indexDistr++;
 		if (indexDistr<22) {
-			$('#c' + casualeIndex1[indexDistr].toString()).animate({'top': posizY[casualeIndex2[indexDistr]]  + 'px','left': posizX[casualeIndex2[indexDistr]] + 'px'}, { duration: 200, easing: "linear", complete: carteDistribuite });
+			$('#c' + casualeIndex1[indexDistr].toString()).animate({'top': posizY[casualeIndex2[indexDistr]]  + 'px','left': posizX[casualeIndex2[indexDistr]] + 'px'}, { duration: 100, easing: "linear", complete: carteDistribuite });
 		} else {
 			$('.dorso').addClass('dorsoClick');
 			assegnaClick();	
@@ -349,7 +373,7 @@ function mostraCarte(idArg) {
 			
 			setTimeout(function(){
 				$('#' + cartaScelta + ' .fronte').html('<div class="leggi"></div>');
-				$('#' + cartaScelta + ' .fronte .leggi').css({'width':'100%','height':Math.ceil(hCartaBig*0.08) + 'px','bottom':Math.ceil(hCartaBig*0.06) + 'px','display':'block'});
+				$('#' + cartaScelta + ' .fronte .leggi').css({'width':'100%','height':Math.ceil(hCartaBig*0.08) + 'px','bottom':Math.ceil(hCartaBig*0.02) + 'px','display':'block'});
 				$('#' + cartaScelta + ' .fronte .leggi').on('click',function(e){					
 					mostraOracolo(idArg,cartaScelta);
 				});
@@ -426,12 +450,13 @@ function appInizia() {
 	$('#main').css({'top':  hUnit + 'px', 'height': hMain + 'px'});
 	$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
 	
-	//$('.footer').css({'height': hUnit *1 + 'px'});
-	//$('.pmenu').css({'height': hUnit + 'px'});
-	//$('.pmenu h4').css({'line-height': hUnit + 'px'});		
-	
+	$('#anteprima').css('z-index','99');	
 	$('#sfondo').css('display','none');
 	$('#home').css('display','block');
+	
+	$('#anteprima').fadeTo(800 , 0, function() {
+		$('#anteprima').css('display','none');
+	});
 	
 	$('.argomento').click(function(){
 		mescolaCarte($(this).attr('id'));
