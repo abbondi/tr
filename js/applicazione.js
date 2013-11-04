@@ -390,6 +390,59 @@ function mostraCarte(idArg) {
 
 function mescolaCarte(idArg) {
 	$('.pagina').css('display','none');	
+		
+	var hUnit = 0;
+	var hMain = 0;
+	var lArea = 0;
+	var hArea = 0;
+	var lCarta = 0;
+	var hCarta = 0;
+	var scala = 1.86;
+		
+	hUnit = Math.ceil($(window).height()/14);
+	hMain = $(window).height() - hUnit*1 - 0;
+	wMain = $(window).width();
+	
+	lArea = Math.floor(wMain*0.9);
+	hArea = Math.floor(hMain*0.9);
+	
+	lCarta = Math.floor(Math.sqrt(wMain*0.9*0.25)); 
+	hCarta = Math.floor(lCarta*scala); 
+	
+	$('#mazzoA').css('top',Math.floor((hMain-200)*0.5) + 'px')
+	$('#mescolacarte').css('display','block');
+	
+		
+	var intervalloMsc=setTimeout(function(){
+		clearTimeout(intervalloMsc);
+		//mostraCarte(idArg);
+	}, 6000);
+	/*
+	$('#photos').sphere3d({
+		elems: 'li',
+		scale: 1,
+		reveal: 2
+    });
+	*/	
+	/*
+	var intervalloMsc=setTimeout(function(){
+		clearTimeout(intervalloMsc);
+		$('#photos').sphere3d( false );		
+		mostraCarte(idArg);
+	}, 3000);
+	
+	
+	$('#photos').on('click',function(e){
+		clearTimeout(intervalloMsc);
+		$('#photos').sphere3d( false );
+		mostraCarte(idArg);		
+	});
+	*/
+	
+}
+
+function mescolaCarte_OLD (idArg) {
+	$('.pagina').css('display','none');	
 	//$('.testata-argomento').css('background-image','url(img/ico1.png)');
 	
 	var hUnit = 0;
