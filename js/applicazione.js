@@ -481,7 +481,9 @@ function mescolaCarte(idArg) {
 			
 			var intervalloMsc3=setTimeout(function(){
 				clearTimeout(intervalloMsc3);
-				$('#mazzoC .cartaDeg').animate({'width': lCarta + 'px','height': hCarta + 'px','left': Math.floor(($('#mazzoC').width() - lCarta)*0.5) + 'px'},1600);
+				$('#mazzoC .cartaDeg').css('display','none');
+				$('#mazzoC #card-C0').css('display','block');
+				$('#mazzoC #card-C0').animate({'width': lCarta + 'px','height': hCarta + 'px','left': Math.floor(($('#mazzoC').width() - lCarta)*0.5) + 'px'},1600);
 				$('#mazzoC').animate({'top': hArea + 2*hUnit + 'px'},1600,function(){
 					mostraCarte(idArg);
 				});
