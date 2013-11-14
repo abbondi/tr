@@ -51,7 +51,7 @@ body {
 }
 
 .errore {
-	background:url(../img/errore.png) center center no-repeat;
+	background:#000 url(../img/errore.png) center center no-repeat;
 }	
 
 #riprova {
@@ -70,6 +70,40 @@ body {
 	cursor:pointer;
 }
 
+#cielo {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:block;
+	background: url(../img/cielo2.jpg) no-repeat;
+	background-size:100% 100%;
+	background-position:center center;
+	
+	-webkit-animation-name:cieloAnimato;
+	-webkit-animation-duration:3500s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:0.1s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-play-state:running;
+}
+
+@-webkit-keyframes cieloAnimato{
+	0%{
+		-webkit-transform:  rotateZ(0deg);
+	}
+	100%{
+		-webkit-transform:  rotateZ(3600deg);
+	}
+}
+
+
+
+
 .pagina {
 	position:absolute;
 	top:0;
@@ -80,9 +114,9 @@ body {
 	height:100%;
 	overflow:hidden;
 	display:none;
-	background:url(../img/cielo.jpg) no-repeat;
-	background-size:100% 100%;
-	background-position:center center;
+	/*background:url(../img/cielo.jpg) no-repeat;*/
+	/*background-size:100% 100%;*/
+	/*background-position:center center;*/
 }
 
 .header {
@@ -151,54 +185,64 @@ body {
 
 
 #A1 {
-	background:url(../img/pergamena1.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 0;
 }
 
 #A2 {
-	background:url(../img/pergamena2.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 25%;
 }
 
 #A3 {
-	background:url(../img/pergamena3.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 50%;
 }
 
 #A4 {
-	background:url(../img/pergamena4.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 75%;	
 }
 
 #A1:hover {
-	background:url(../img/pergamena1h.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 0;
 }
 
 #A2:hover {
-	background:url(../img/pergamena2h.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 25%;	
 }
 
 #A3:hover {
-	background:url(../img/pergamena3h.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 50%;
 }
 
 #A4:hover {
-	background:url(../img/pergamena4h.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 75%;
 }
 
 .consiglio {
-	background:url(../img/pergamena5.png) no-repeat;
-	background-size: 100% 100%;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 100%;
 	cursor:pointer;
 }
 
 .consiglio:hover {
-	background:url(../img/pergamena5h.png) no-repeat;
-	background-size: 100% 100%;		
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 100%;	
 }
 
 .icona {
@@ -278,44 +322,89 @@ body {
 	position:absolute;
 	width:90%;
 	height:90%;
-	background: url(../img/dorso.png) 0 0 no-repeat;
-	background-size: 100% 200%;
-	border:none;
+	/*background: url(../img/dorso.png) 0 0 no-repeat;*/
+	/*background-size: 100% 200%;*/
+	/*border:none;*/
+	
+	background: url(../img/dorsoc-colorati.jpg) no-repeat;
+	background-size: 500% 100%;
+	background-position: 50% 0;
+	border:1px solid #999;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
 }
 
 .dorsoClick {
 	position:absolute;
 	width:90%;
 	height:90%;
-	background: url(../img/dorso.png) 0 0 no-repeat;
-	background-size: 100% 200%;
-	border:none;
+	/*background: url(../img/dorso.png) 0 0 no-repeat;*/
+	/*background-size: 100% 200%;*/
+	/*border:none;*/
+	
+	background: url(../img/dorsoc-colorati.jpg) no-repeat;
+	background-size: 500% 100%;
+	background-position: 50% 0;
+	border:1px solid #999;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
 	cursor:pointer;
 }
 
 .dorsoClick:hover {
-	position:absolute;
-	width:90%;
-	height:90%;
-	background: url(../img/dorso.png) 0 100% no-repeat;
-	background-size: 100% 200%;
-	border:none;
+	width:94%;
+	height:94%;
 }
+
 
 .fronte {
 	position:absolute;
 	width:0;
 	height:90%;
-	background:none;
-	border:none;
-	background-size:100% 100%;
+	/*background:url(http://www.massimoabbondi.it/apps/zoit/data/img/arcani.jpg);*/
+	/*background-size:600% 600%;*/
 	background-repeat:no-repeat;
+	border:none;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	visibility:hidden;
+}
+
+#c0 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c0.jpg);
+	background-size:100% 100%;
+}
+#c1 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c1.jpg);
+	background-size:100% 100%;
+}
+#c2 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c2.jpg);
+	background-size:100% 100%;
+}
+#c3 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c3.jpg);
+	background-size:100% 100%;
+}
+#c4 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c4.jpg);
+	background-size:100% 100%;
+}
+#c5 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c5.jpg);
+	background-size:100% 100%;
+}
+#c6 .fronte {
+	background:url(http://www.massimoabbondi.it/apps/zoit/data/img/c6.jpg);
+	background-size:100% 100%;
 }
 
 .fronte img{
 	width:100%;
 	height:100%;
-	background:#ff0;
 	border:none;
 }
 
@@ -744,10 +833,14 @@ body {
 		width: 100%;
 		height: 100%;
 		position: absolute;
-		color: white;
-		background: url(../img/dorsoc.png) center center no-repeat;
-		background-size: 100% 100%;
-		border:0px solid #000;
+		color: #fff;
+		background: url(../img/dorsoc-colorati.jpg) no-repeat;
+		background-size: 500% 100%;
+		background-position: 50% 0;
+		border:1px solid #999;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
 		
 		-webkit-transform: rotateX( 60deg );
 		-moz-transform: rotateX( 60deg );
