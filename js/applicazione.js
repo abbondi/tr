@@ -109,51 +109,48 @@ function ricomincia() {
 function mostraOracolo(idArg, cartaScelta) {
 	//alert('cliccato ' + idArg + ', ' + cartaScelta);
 	var urlJsonpN = 'http://www.massimoabbondi.it/apps/zoit/data/oracolo.php';
-	
+	var colore = '';
+	if (cartaScelta == 'cdg') {
+		colore = 'ee7d00';
+	} else {
+		
+		switch(idArg)
+		{
+			case 'A1':
+				colore = 'e00d4f';
+				break;
+			case 'A2':
+				colore = '543187';
+				break;
+			case 'A3':
+				colore = '009a32';
+				break;
+			case 'A4':
+				colore = '009bdd';
+				break;
+			default:
+				colore = 'ee7d00';	
+		}	
+		
+	}
 	
 	function jsonpCallback(response){
 		
-		//alert(response);
-		var hUnit = 0;
-		var hMain = 0;
-		var hCartaBig = 0;
-		var lCartaBig = 0;
-		var topMrgCartaBig = 0;
-		var lftMrgCartaBig = 0;
-		var scala = 1.38;
-	
-		hUnit = Math.ceil($(window).height()/14);
-		hMain = $(window).height() - hUnit;
-		wMain = $(window).width();
-		lArea = Math.floor(wMain*1);
-		hArea = Math.floor(hMain*1 - hUnit*2);
 		
-		if (lArea*scala<hArea) {
-			hCartaBig = Math.floor(lArea*scala);
-			lCartaBig = lArea;
-			topMrgCartaBig = Math.floor((hArea - lArea*scala)*0.5);
-			lftMrgCartaBig = 0;
-		} else {
-			hCartaBig = hArea;
-			lCartaBig = Math.floor(hArea/scala);
-			topMrgCartaBig = 0;
-			lftMrgCartaBig = Math.floor((lArea - hArea/scala)*0.5);		
-		}
-	
-		$('#contenitore-pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
-		//$('#pergamena').css({'top':  Math.floor(hUnit * 0.5) + 'px', 'width':  lCartaBig + 'px', 'height':  hCartaBig + 'px', 'margin-left':  lftMrgCartaBig + 'px'});
-			
+		$('#contenitore-pergamena').css({'top':  Math.floor($(window).height() * 0.15) + 'px', 'height':  Math.floor($(window).height() * 0.7) + 'px','background-color':'#' + colore});
+		$('.swiper-container').css({'top':  Math.floor($(window).height() * 0.7*0.05) + 'px', 'height':  Math.floor($(window).height() * 0.7*0.9) + 'px','width':  Math.floor($(window).width() * 0.75 - $(window).height() * 0.7*0.1) + 'px'});	
+		
 		$('#pergamena .slide-inner').html(response + '<p>&nbsp;</p><p>&nbsp;</p>');
 		$('#pergamena .slide-inner img').css('width','100%');		
 		
-		$('.back-center').css('width', 2*hUnit + 'px');
-		$('.footer').css({'height': hUnit *1 + 'px'});
+		$('.back-center').css('width', $(window).height() * 0.14 + 'px');
+		$('.footer').css({'height': $(window).height() * 0.07 + 'px'});
 		
 		//$('.pagina').fadeTo(800 , 0, function() {
 				$('#oracolo').fadeTo(800 , 1, function(){
 					
-					$('.back-center').css('width', 2*hUnit + 'px');
-					$('.footer').css({'height': hUnit *1 + 'px'});
+					$('.back-center').css('width', $(window).height() * 0.14 + 'px');
+					$('.footer').css({'height': $(window).height() * 0.07 + 'px'});
 				
 				});
 		//});
@@ -178,8 +175,6 @@ function mostraOracolo(idArg, cartaScelta) {
 		//inizializza Pagine
 		
 		// fine codice swipe e scroll pages	
-		$('#pergamena-sup').css({'top':'0px','height':Math.ceil(hCartaBig/788*65) + 'px'});
-		$('#pergamena-inf').css({'bottom':'0px','height':Math.ceil(hCartaBig/788*68) + 'px'});
 		$('.back-center').click(function(){
 			$('.footer').fadeTo(800 , 0);
 			$('#oracolo').fadeTo(800 , 0, function() {
@@ -671,16 +666,13 @@ function appInizia() {
 
 	var hUnit = 0;
 	var hMain = 0;
-	hUnit = Math.ceil($(window).height()/14);
-	hMain = $(window).height() - hUnit;
-	$('.header').css({'height': hUnit + 'px'});
-	$('#cielo').css({'height': 2*$(window).height() + 'px','width': 2*$(window).height() + 'px','left':-0.5*$(window).height() + 'px','top':-0.5*$(window).height() + 'px'});
-	//$('#intestazioniTop').css({'height': hUnit + 'px'});
 	
-	$('.header h4').css({'line-height': hUnit*1 + 'px', 'font-size': hUnit*0.5 + 'px'});
-	$('#main').css({'top':  hUnit + 'px', 'height': hMain + 'px'});
-	$('#main .segnaposto').css({'margin-top':  Math.ceil(hMain/56) + 'px', 'height': Math.ceil(hMain/7) + 'px', 'padding':'0', 'font-size': Math.ceil(hMain/14) + 'px', 'line-height': Math.ceil(hMain/7) + 'px'});
+	hUnit = Math.ceil($(window).height()/64);
+	$('#contenuto').css({'height': $(window).height() + 'px', 'width': $(window).width() + 'px'});
+	$('#cielo').css({'height': 2*$(window).height() + 'px','width': 2*$(window).height() + 'px','left':-0.5*$(window).height() + 'px','top':-0.5*$(window).height() + 'px','display':'block'});
 	
+	$('#main').css({'top':  hUnit*4 + 'px', 'height': hUnit*60 + 'px'});
+	$('#main .segnaposto').css({'margin-top': hUnit*3 + 'px', 'height': hUnit*7 + 'px', 'padding':'0'});
 	$('#anteprima').css('z-index','99');	
 	$('#sfondo').css('display','none');
 	$('#home').css('display','block');
@@ -697,9 +689,8 @@ function appInizia() {
 		$('#home').animate({'left':-$(window).width() + 'px'},500,function(){
 			mostraOracolo('A1','cdg');
 		});
-		//mostraOracolo('A1','cdg');
-	});	
-	
+		
+	});		
 	
 };
 
@@ -718,7 +709,6 @@ function doConnectFunction() {
 
 function doNotConnectFunction() {
 	$('#sfondo').addClass('errore');
-	//alert('ATTENZIONE: non sei connesso');
 	$('#riprova').css('display','block');
 	$('#riprova').click(function() {riprova();});
 }

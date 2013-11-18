@@ -14,7 +14,9 @@
     <author href="http://www.massimoabbondi.it" email="magenta@massimoabbondi.it">
         Massimo Abbondi
 	</author>
-        
+	
+    <access origin="*" /> 
+	   
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 	         
