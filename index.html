@@ -5,307 +5,598 @@
     <title>ZOIT</title>
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="description" content="">
-    <meta name="author" content="Alessio Morganti">
-	<link rel="stylesheet" href="css/idangerous.swiper.css">
-	<link rel="stylesheet" href="css/idangerous.swiper.scrollbar.css">  
-    <link rel="stylesheet" href="css/applicazione.css">  
+    <link rel="stylesheet" href="css/idangerous.swiper.css">
+	<link rel="stylesheet" href="css/idangerous.swiper.scrollbar.css">
     <link rel="stylesheet" href="http://www.massimoabbondi.it/apps/zoit/zoit2.css">
-    
-	<style>
-	/* PERSONALIZZAZIONI */
+    <style>
+#cielo {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:none;
+	background: url(img/cielo2.jpg) no-repeat;
+	background-size:100% 100%;
+	background-position:center center;
 	
-	</style>
-    
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="js/idangerous.swiper-2.1.min.js"></script>
-	<script src="js/idangerous.swiper.scrollbar-2.1.js"></script>  
-    <script src="js/applicazione.js"></script>
+	-webkit-animation-name:cieloAnimato;
+	-webkit-animation-duration:3500s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:0.1s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-play-state:running;
+}
+
+@-webkit-keyframes cieloAnimato{
+	0%{
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform:  rotate3d(0, 0, 1, 0deg);;
+	}
+	100%{
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform:  rotate3d(0, 0, 1, 3600deg);
+	}
+}
+	
+#anteprima {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:block;
+	background:url(img/cielo2.jpg) no-repeat;
+	background-size:100% 100%;
+	background-position:center center;
+	text-align:center;
+}
+
+#anteprima img {
+	height:100%;
+	width:auto;
+	margin:auto;		
+}	
+
+.fadeOut{
+	opacity: 0;
+	transition: opacity;
+	transition-timing-function: ease-out;
+	transition-duration: 800ms;
+	transition-delay: 200ms;
+		
+	-webkit-transition: opacity;
+	-webkit-transition-timing-function: ease-out;
+	-webkit-transition-duration: 800ms;
+	-webkit-transition-delay: 200ms; 
+}
+
+#sfondo {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:block;
+}
+
+.loader {
+	background:url(img/loader.gif) center bottom no-repeat;
+}
+
+.errore {
+	background:#00001a url(img/errore.png) center center no-repeat;
+}	
+
+#riprova {
+	position:absolute;			
+	left:0px;
+	right:0px;
+	bottom:0;
+	height:auto;
+	overflow:hidden;
+	display:none;
+	background:#333;
+	color:#fff;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	padding:20px;
+	cursor:pointer;
+}
+
+#contenuto {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:block;
+}
+
+.pagina {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	display:none;
+}
+
+#main {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.segnaposto {
+	position:relative;
+	margin:0 auto;
+	width:80%;
+	height:auto;
+	font-size:2em;
+	font-family:gothic_ultra_otregular,serif;
+	text-align:center;
+		
+}
+
+.argomento {
+	cursor:pointer;
+	
+}
+
+.consiglio {
+	-webkit-transform: translate3d(-150%, 0, 0);
+	transform: translate3d(-150%, 0, 0);
+	background:#ee7d00;
+	cursor:pointer;
+}
+.consiglio.consiglioin {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1.4s ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1.4s ease;
+	transform: translate3d(0, 0, 0);	
+}
+
+.consiglio:hover {
+	background:#fbb000;
+}
+
+#A1 {
+	-webkit-transform: translate3d(-150%, 0, 0);
+	transform: translate3d(-150%, 0, 0);
+	background:#e00d4f;
+}
+#A1.A1in {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1.4s ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1.4s ease;
+	transform: translate3d(0, 0, 0);	
+}
+
+#A2 {
+	-webkit-transform: translate3d(-150%, 0, 0);
+	transform: translate3d(-150%, 0, 0);
+	background:#009a32;
+}
+#A2.A2in {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1.4s ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1.4s ease;
+	transform: translate3d(0, 0, 0);	
+}
+
+#A3 {
+	-webkit-transform: translate3d(150%, 0, 0);
+	transform: translate3d(150%, 0, 0);
+	background:#543187;	
+}
+#A3.A3in {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1.4s ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1.4s ease;
+	transform: translate3d(0, 0, 0);	
+}
+
+#A4 {
+	-webkit-transform: translate3d(150%, 0, 0);
+	transform: translate3d(150%, 0, 0);
+	background:#009bdd;	
+}
+#A4.A4in {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1.4s ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1.4s ease;
+	transform: translate3d(0, 0, 0);	
+}
+
+#A1:hover {
+	background:#f71373;
+}
+
+#A2:hover {
+	background:#00cd49;	
+}
+
+#A3:hover {
+	background:#7b48bb;
+}
+
+#A4:hover {
+	background:#00cef6;
+}
+
+.icona {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+.consiglio .icona {
+	background: url(img/ico5.png) no-repeat;
+	background-size:auto 100%;
+	background-position:center left;
+}
+
+#A1 .icona {
+	background: url(img/ico1.png) no-repeat;
+	background-size:auto 100%;
+	background-position:center left;
+}
+
+#A2 .icona {
+	background: url(img/ico2.png) no-repeat;
+	background-size:auto 100%;
+	background-position:center left;
+}
+
+#A3 .icona {
+	background: url(img/ico3.png) no-repeat;
+	background-size:auto 100%;
+	background-position:center left;
+}
+
+#A4 .icona {
+	background: url(img/ico4.png) no-repeat;
+	background-size:auto 100%;
+	background-position:center left;
+}
+
+#home {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1s ease;
+	-webkit-transform: translate3d(0, 0, 0);	
+	
+	transform-style: preserve-3d;
+	transition:all 1s ease;
+	transform: translate3d(0, 0, 0);
+}
+
+#home.homeLeft {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1s ease;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	
+	transform-style: preserve-3d;
+	transition:all 1s ease;
+	transform: translate3d(-100%, 0, 0);		
+}
+
+#home.homeCenter {
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition:all 1s ease;
+	-webkit-transform: translate3d(0, 0, 0);	
+	
+	transform-style: preserve-3d;
+	transition:all 1s ease;
+	transform: translate3d(0, 0, 0);			
+}
+
+#contenitore-pergamena{position:relative;width:75%;height:70%;margin:0 auto;}
+#pergamena{position:relative;top:0;left:0;width:100%;height:100%;}
+.swiper-container{position:relative;top:0;height:100%;width:100%;margin:0 auto;border:none;}
+.slide-inner{padding:0 6px 0 0;color:#fff;width:auto;}
+.swiper-scrollbar{background:#f6e6b6;position:absolute;right:0px;top:0;height:100%;width:2px;}
+.swiper-scrollbar .swiper-scrollbar-drag{background:#fff;}
+.slider-inner img{
+	width:100%;
+	height:auto;
+}
+
+.footer {
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	background: #000 url(img/barra.png) repeat-x;
+}
+
+.back-center {
+	position:relative;
+	margin:0 auto;
+	height:100%;
+	width:auto;
+	background: url(img/back-center.png) center center no-repeat;
+	background-size:100% 100%;
+	cursor:pointer;
+	z-index:999;
+	
+}
+
+#oracolo{
+	opacity: 0;
+	
+	-webkit-transition: opacity 1s ease-in;
+       -moz-transition: opacity 1s ease-in;
+        -ms-transition: opacity 1s ease-in;
+         -o-transition: opacity 1s ease-in;
+            transition: opacity 1s ease-in;
+			
+}
+
+#oracolo.fadeIn{ 
+	opacity: 1;	
+}
+
+* {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+
+
+</style>
+
+<script src="js/jquery-1.9.1.min.js"></script> 
+<script src="js/idangerous.swiper-2.1.min.js"></script>
+<script src="js/idangerous.swiper.scrollbar-2.1.js"></script>  
+<script>
+	$(document).ready(function() {	
+		
+		/* TEST */
+		
+		function ricomincia() {
+			$('#oracolo').css({'display':'none'});
+			$('#home').removeClass('homeLeft');
+		}
+		
+		function mostraOracolo(idArg, cartaScelta) {
+			//alert('cliccato ' + idArg + ', ' + cartaScelta);
+			var urlJsonpN = 'http://www.massimoabbondi.it/apps/zoit/data/oracolo.php';
+			var colore = '';
+			if (cartaScelta == 'cdg') {
+				colore = 'ee7d00';
+			} else {
+				
+				switch(idArg)
+				{
+					case 'A1':
+						colore = 'e00d4f';
+						break;
+					case 'A2':
+						colore = '543187';
+						break;
+					case 'A3':
+						colore = '009a32';
+						break;
+					case 'A4':
+						colore = '009bdd';
+						break;
+					default:
+						colore = 'ee7d00';	
+				}	
+				
+			}
+			
+			function jsonpCallback(response){
+				
+				$('#contenitore-pergamena').css({'top':  Math.floor($(window).height() * 0.15) + 'px', 'height':  Math.floor($(window).height() * 0.7) + 'px','background-color':'#' + colore});
+				$('.swiper-container').css({'top':  Math.floor($(window).height() * 0.7*0.05) + 'px', 'height':  Math.floor($(window).height() * 0.7*0.9) + 'px','width':  Math.floor($(window).width() * 0.75 - $(window).height() * 0.7*0.1) + 'px'});	
+				
+				$('#pergamena .slide-inner').html(response + '<p>&nbsp;</p><p>&nbsp;</p>');
+				$('#pergamena .slide-inner img').css('width','100%');		
+				
+				$('.back-center').css('width', $(window).height() * 0.14 + 'px');
+				$('.footer').css({'height': $(window).height() * 0.07 + 'px'});
+				$('#oracolo').css({'display':'block'});
+						
+				// inizio codice swipe e scroll pages
+				var mySwiper = new Swiper('.swiper-container', {
+					scrollContainer:true,
+					mousewheelControl : true,
+					mode:'vertical',
+					//Enable Scrollbar
+					scrollbar: {
+						container :'.swiper-scrollbar',
+						hide: true,
+						draggable: false  
+					}
+				});
+				//inizializza Pagine				
+				// fine codice swipe e scroll pages	
+				$('.back-center').click(function(){
+					$('#oracolo').removeClass('fadeIn');
+					setTimeout(function() {
+        				ricomincia();
+					}, 1200);
+						
+				});	
+				
+				// mostra cartiglio;
+				$('#oracolo').addClass('fadeIn');
+				
+				
+				
+				
+				
+					
+													
+			}
+			
+			$.ajax({
+				url: urlJsonpN,
+				dataType: 'jsonp',
+				data: { Argomento: idArg, CodC: cartaScelta },
+				error: function(xhr, status, error) {
+						//alert(error);
+						},
+				success: jsonpCallback			
+			});
+		}
+		
+		
+		
+		
+
+		function appInizia() {
+
+			var hUnit = 0;
+			var hMain = 0;
+			
+			hUnit = Math.ceil($(window).height()/64);
+			$('#contenuto').css({'height': $(window).height() + 'px', 'width': $(window).width() + 'px'});
+			$('#cielo').css({'height': 2*$(window).height() + 'px','width': 2*$(window).height() + 'px','left':-0.5*$(window).height() + 'px','top':-0.5*$(window).height() + 'px','display':'block'});
+			
+			$('#main').css({'top':  hUnit*4 + 'px', 'height': hUnit*60 + 'px'});
+			$('#main .segnaposto').css({'margin-top': hUnit*3 + 'px', 'height': hUnit*7 + 'px', 'padding':'0'});
+			$('#anteprima').css('z-index','99');	
+			$('#sfondo').css('display','none');
+			$('#home').css('display','block');
+			$('#anteprima').addClass('fadeOut');
+			
+			setTimeout(function() {
+        		$('#A1').addClass('A1in');
+        		//setTimeout(arguments.callee, 2000);    
+			}, 10);
+			
+			setTimeout(function() {
+        		$('#A3').addClass('A3in'); 
+			}, 210);
+			
+			setTimeout(function() {
+        		$('#A2').addClass('A2in'); 
+			}, 410);
+			
+			setTimeout(function() {
+        		$('#A4').addClass('A4in'); 
+			}, 610);
+			
+			setTimeout(function() {
+        		$('.consiglio').addClass('consiglioin');
+			}, 810);
+			
+			$('#anteprima').css('display','none');	
+			
+			$('.argomento').click(function(){
+				//mescolaCarte($(this).attr('id'));
+			});
+			
+			$('.consiglio').click(function(){
+				$('#home').addClass('homeLeft');
+				setTimeout(function() {
+        			mostraOracolo('A1','cdg');
+				}, 1000); 
+								
+			});		
+			
+		};
+		
+		
+		
+		
+		
+
+		function riprova() {
+			$('#riprova').css('display','none');
+			$('#sfondo').removeClass('errore');
+			testConn();
+		}
+		
+		function doConnectFunction() {
+			//alert('sei connesso');
+			appInizia();
+		}
+		
+		function doNotConnectFunction() {
+			$('#sfondo').addClass('errore');
+			$('#riprova').css('display','block');
+			$('#riprova').click(function() {riprova();});
+		}
+		
+		function testConn() {
+			var i = new Image();
+			i.onload = doConnectFunction;
+			i.onerror = doNotConnectFunction;
+			// IMMAGINE DI TEST
+			i.src = 'http://www.massimoabbondi.it/apps/test.gif?d=' + escape(Date());
+		}
+		
+		
+		
+		
+		testConn();
+		
+	});
+	
+</script>    
 </head>
 <body>
-	<div id="contenuto">
-        <div id="anteprima">
-            <img src="img/anteprima.png">
-        </div>
-        <div id="sfondo" class="loader">
-        </div>
-        <div id="cielo">
-        </div>
-        <div id="riprova">
-            RIPROVA
-        </div>
 
-        <div id="home" class="pagina">
-           <div id="main">
-                <div class="segnaposto argomento" id="A1"><div class="icona"></div></div>                
-                <div class="segnaposto argomento" id="A3"><div class="icona"></div></div>
-                <div class="segnaposto argomento" id="A2"><div class="icona"></div></div>
-                <div class="segnaposto argomento" id="A4"><div class="icona"></div></div>
-                <div class="segnaposto consiglio"><div class="icona"></div></div>
-            </div>
-        </div>
-            
-            
-            
-            
+<div id="contenuto">
+	<div id="anteprima">
+        <img src="img/anteprima.png">
+    </div>
+    <div id="sfondo" class="loader">
+    </div>
+    <div id="cielo">
+    </div>
+    <div id="riprova">
+        RIPROVA
     </div>
     
-	
-    
-    <div id="mescolacarte" class="pagina">
-		<div class="header">
-        	<div class="testata-argomento"></div>
-		</div>
-        
-        <div id="mazzoA">
-            <div id="card-A0" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A1" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A2" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A3" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A4" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A5" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A6" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A7" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A8" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A9" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A10" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A11" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A12" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A13" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A14" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A15" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A16" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A17" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A18" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A19" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A20" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-A21" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-    	</div>
-        
-        <div id="mazzoB" style="display:none;">
-            <div id="card-B0" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B1" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B2" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B3" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B4" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B5" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B6" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B7" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B8" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B9" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B10" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B11" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B12" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B13" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B14" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B15" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B16" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B17" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B18" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B19" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B20" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-B21" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-    	</div>
-       
-       	<div id="mazzoC" style="display:none;">
-            <div id="card-C0" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C1" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C2" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C3" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C4" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C5" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C6" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C7" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C8" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C9" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C10" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C11" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C12" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C13" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C14" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C15" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C16" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C17" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C18" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C19" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C20" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-            <div id="card-C21" class="cartaDeg">
-                <div class="dorsoDeg"></div>
-            </div>
-      </div>
-       
-       
-	</div>
-    
-    <div id="tavolocarte" class="pagina">
-		<div class="header">
-        	<div class="back-home"></div>
-        	<div class="testata-argomento"></div>
-		</div>
-        <div id="areacarte">
-        	<div class="carta" id="c0"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c1"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c2"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c3"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c4"><div class="dorso"></div><div class="fronte"></div></div>
-          
-            <div class="carta" id="c5"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c6"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c7"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c8"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c9"><div class="dorso"></div><div class="fronte"></div></div>
-            
-            <div class="carta" id="c10"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c11"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c12"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c13"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c14"><div class="dorso"></div><div class="fronte"></div></div>
-            
-            <div class="carta" id="c15"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c16"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c17"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c18"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c19"><div class="dorso"></div><div class="fronte"></div></div>
-            
-            <div class="carta" id="c20"><div class="dorso"></div><div class="fronte"></div></div>
-            <div class="carta" id="c21"><div class="dorso"></div><div class="fronte"></div></div>
-            
+    <!-- scelta argomento -->
+    <div id="home" class="pagina">
+       <div id="main">
+            <div class="segnaposto argomento" id="A1"><div class="icona"></div></div>                
+            <div class="segnaposto argomento" id="A3"><div class="icona"></div></div>
+            <div class="segnaposto argomento" id="A2"><div class="icona"></div></div>
+            <div class="segnaposto argomento" id="A4"><div class="icona"></div></div>
+            <div class="segnaposto consiglio"><div class="icona"></div></div>
         </div>
-        
-        
-	</div>
+    </div>
+  	<!-- scelta argomento fine -->
     
-   
-
+    <!-- oracolo -->
     <div id="oracolo" class="pagina">
         <div id="contenitore-pergamena">        
             <div id="pergamena">
@@ -322,23 +613,15 @@
         	</div>
         </div>
         
-        </div>
         <div class="footer">
         	<div class="back-center"></div>
 		</div>
 	</div>
-    
-   
-    
-    
-
-	
-    <script>
-			
-    $(document).ready(function() {		
-		testConn();
-	});
+  <!-- oracolo fine -->
   
-    </script>
+  
+  
+</div>
+
 </body>
 </html>
