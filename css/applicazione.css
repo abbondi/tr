@@ -10,18 +10,6 @@ body {
 	background:#000;		            
 }
 
-#contenuto {
-	position:absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	width:100%;
-	height:100%;
-	overflow:hidden;
-	display:block;
-}
-
 #anteprima {
 	position:absolute;
 	top:0;
@@ -32,7 +20,7 @@ body {
 	height:100%;
 	overflow:hidden;
 	display:block;
-	background:url(../img/cielo2.jpg) no-repeat;
+	background:url(../img/cielo.jpg) no-repeat;
 	background-size:100% 100%;
 	background-position:center center;
 	text-align:center;
@@ -55,10 +43,11 @@ body {
 	height:100%;
 	overflow:hidden;
 	display:block;
+	/*background:#000 url(../img/loader.gif) center center no-repeat;*/
 }
 
 .loader {
-	background:url(../img/loader.gif) center bottom no-repeat;
+	background:url(../img/loader.gif) center center no-repeat;
 }
 
 .errore {
@@ -90,7 +79,7 @@ body {
 	width:100%;
 	height:100%;
 	overflow:hidden;
-	display:none;
+	display:block;
 	background: url(../img/cielo2.jpg) no-repeat;
 	background-size:100% 100%;
 	background-position:center center;
@@ -176,13 +165,12 @@ body {
 	top:0;
 	left:0;
 	right:0;
-	bottom:0;
 }
 
 .segnaposto {
 	position:relative;
 	margin:0 auto;
-	width:80%;
+	width:90%;
 	height:auto;
 	font-size:2em;
 	font-family:gothic_ultra_otregular,serif;
@@ -197,44 +185,64 @@ body {
 
 
 #A1 {
-	background:#e00d4f;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 0;
 }
 
 #A2 {
-	background:#009a32;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 25%;
 }
 
 #A3 {
-	background:#543187;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 50%;
 }
 
 #A4 {
-	background:#009bdd;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 75%;	
 }
 
 #A1:hover {
-	background:#f71373;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 0;
 }
 
 #A2:hover {
-	background:#00cd49;	
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 25%;	
 }
 
 #A3:hover {
-	background:#7b48bb;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 50%;
 }
 
 #A4:hover {
-	background:#00cef6;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 75%;
 }
 
 .consiglio {
-	background:#ee7d00;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 0 100%;
 	cursor:pointer;
 }
 
 .consiglio:hover {
-	background:#fbb000;
+	background:url(../img/pergamene-iniziali.png) no-repeat;
+	background-size: 200% 500%;	
+	background-position: 100% 100%;	
 }
 
 .icona {
@@ -249,31 +257,31 @@ body {
 #A1 .icona {
 	background: url(../img/ico1.png) no-repeat;
 	background-size:auto 100%;
-	background-position:center left;
+	background-position:top center;
 }
 
 #A2 .icona {
 	background: url(../img/ico2.png) no-repeat;
 	background-size:auto 100%;
-	background-position:center left;
+	background-position:top center;
 }
 
 #A3 .icona {
 	background: url(../img/ico3.png) no-repeat;
 	background-size:auto 100%;
-	background-position:center left;
+	background-position:top center;
 }
 
 #A4 .icona {
 	background: url(../img/ico4.png) no-repeat;
 	background-size:auto 100%;
-	background-position:center left;
+	background-position:top center;
 }
 
 .consiglio .icona {
 	background: url(../img/ico5.png) no-repeat;
 	background-size:auto 100%;
-	background-position:center left;
+	background-position:top center;
 }
 
 .footer {
@@ -632,12 +640,14 @@ body {
 	cursor:pointer;
 	z-index:999;
 }
-#contenitore-pergamena{position:relative;width:75%;height:70%;margin:0 auto;}
-#pergamena{position:relative;top:0;left:0;width:100%;height:100%;}
-.swiper-container{position:relative;top:0;height:100%;width:100%;margin:0 auto;border:none;}
-.slide-inner{padding:0 6px 0 0;color:#fff;width:auto;}
-.swiper-scrollbar{background:#f6e6b6;position:absolute;right:0px;top:0;height:100%;width:2px;}
-.swiper-scrollbar .swiper-scrollbar-drag{background:#fff;}
+#contenitore-pergamena{position:relative;}
+#pergamena{position:relative;width:100%;height:100%;background:url(../img/pergamena.png) no-repeat;background-size:100% 100%;}
+#pergamena-sup{position:absolute;width:100%;height:5%;background:url(../img/pergamena-sup.png) no-repeat;background-size:100% 100%;z-index:999999;}
+#pergamena-inf{position:absolute;width:100%;height:5%;background:url(../img/pergamena-inf.png) no-repeat;background-size:100% 100%;z-index:999999;}
+.swiper-container{position:relative;top:5%;height:90%;width:80%;margin:15% auto;border:none}
+.slide-inner{padding:20px;color:#333;width:auto;}
+.swiper-scrollbar{background:#f6e6b6;position:absolute;right:3px;top:0;height:100%;width:2px;}
+.swiper-scrollbar .swiper-scrollbar-drag{background:#9b8b6d;}
 .slider-inner img{
 	width:100%;
 	height:auto;
