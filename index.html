@@ -416,8 +416,8 @@
 #pergamena{position:relative;top:0;left:0;width:100%;height:100%;}
 .swiper-container{position:relative;top:0;height:100%;width:100%;margin:0 auto;border:none;}
 .slide-inner{padding:0 6px 0 0;color:#fff;width:auto;}
-.swiper-scrollbar{background:#f6e6b6;position:absolute;right:0px;top:0;height:100%;width:2px;}
-.swiper-scrollbar .swiper-scrollbar-drag{background:#fff;}
+.swiper-scrollbar{background:none;position:absolute;right:0px;top:0;height:100%;width:2px;}
+.swiper-scrollbar .swiper-scrollbar-drag{background:none;}
 .slider-inner img{
 	width:100%;
 	height:auto;
@@ -582,19 +582,13 @@
  
 /*SPREAD*/
 .spread {
-  /*width: 75px;*/
-  /*height: 140px;*/
-  position: relative;
-  /*margin: 0 auto;*/
+   position: relative;
 }
-
 
 .spread .card {
   position: absolute;
   top: 0px;
   left: 0px;
-  /*-webkit-transition: top 2s ease, left 2s ease;*/
-  /*transition: top 2s ease, left 2s ease;*/
 }
 
 .spread .suit1 {
@@ -606,106 +600,96 @@
 .spread .suit2 {
   left: 0px;
   top: 0px;
-  -webkit-transform: rotate(-2deg); 
+  -webkit-transform: rotate(-12deg); 
 }
 
 .spread .suit3 {
   left: 0px;
   top: 0px;
-  -webkit-transform: rotate(-4deg);  
+  -webkit-transform: rotate(4deg);
 }
 
 .spread .suit4{
   left: 0px;
   top: 0px;
-  -webkit-transform: rotate(6deg);  
+  -webkit-transform: rotate(-3deg);
 }
 
 
 
 @-webkit-keyframes mischia0
 	{
-	0% {-webkit-transform: translateX( 0px ) rotate(-10deg); z-index:30}
-	12% {-webkit-transform: translateX( 140% ) rotate(6deg); z-index:30}
-	13% {-webkit-transform: translateX( 140% ) rotate(6deg); z-index:22}	
-	25% {-webkit-transform: translateX( 0px ) rotate(-10deg); z-index:22;}
-	100%  {-webkit-transform: translateX( 0px ) rotate(-10deg); z-index:26;}
+	0% {-webkit-transform: translateX( 0px ) rotate(-10deg);opacity:1;}
+	50% {-webkit-transform: translateX( 140% ) rotate(10deg);opacity:1;}
+	50.1% {-webkit-transform: translateX( 140% ) rotate(10deg);opacity:0;}
+	100% {-webkit-transform: translateX( 0px ) rotate(-10deg);opacity:0;}
 	}
-
+@-webkit-keyframes mischia0r
+	{
+	0% {-webkit-transform: translateX( 140% ) rotate(10deg);opacity:0;}
+	50% {-webkit-transform: translateX( 140% ) rotate(10deg);opacity:0;}
+	50.1% {-webkit-transform: translateX( 140% ) rotate(10deg);opacity:1;}
+	100% {-webkit-transform: translateX( 0px ) rotate(-10deg);opacity:1;}
+	}
+	
 @-webkit-keyframes mischia1
 	{
-	0% {-webkit-transform: translateX( 0px ) rotate(2deg); z-index:29}
-	14% {-webkit-transform: translateX( 0px ) rotate(2deg); z-index:29}
-	26% {-webkit-transform: translateX( 120% ) rotate(8deg); z-index:29}
-	27% {-webkit-transform: translateX( 120% ) rotate(8deg); z-index:21}	
-	39% {-webkit-transform: translateX( 0px ) rotate(2deg); z-index:21;}
-	100%  {-webkit-transform: translateX( 0px ) rotate(2deg); z-index:25;}
+	0% {-webkit-transform: translateX( 0px ) rotate(4deg);opacity:1;}
+	50% {-webkit-transform: translateX( 160% ) rotate(20deg);opacity:1;}
+	50.1% {-webkit-transform: translateX( 160% ) rotate(20deg);opacity:0;}
+	100% {-webkit-transform: translateX( 0px ) rotate(4deg);opacity:0;}
+	}
+
+@-webkit-keyframes mischia1r
+	{
+	0% {-webkit-transform: translateX( 160% ) rotate(20deg);opacity:0;}
+	50% {-webkit-transform: translateX( 160% ) rotate(20deg);opacity:0;}
+	50.1% {-webkit-transform: translateX( 160% ) rotate(20deg);opacity:1;}
+	100% {-webkit-transform: translateX( 0px ) rotate(4deg);opacity:1;}
 	}	
 
-@-webkit-keyframes mischia2
-	{
-	0% {-webkit-transform: translateX( 0px ) rotate(-4deg); z-index:28}
-	28% {-webkit-transform: translateX( 0px ) rotate(-4deg); z-index:28}
-	40% {-webkit-transform: translateX( 150% ) rotate(6deg); z-index:28}
-	41% {-webkit-transform: translateX( 150% ) rotate(6deg); z-index:20}	
-	53% {-webkit-transform: translateX( 0px ) rotate(-4deg); z-index:20;}
-	100%  {-webkit-transform: translateX( 0px ) rotate(-4deg); z-index:24;}	
-	}	
-
-@-webkit-keyframes mischia3
-	{
-	0% {-webkit-transform: translateX( 0px ) rotate(6deg); z-index:27}
-	42% {-webkit-transform: translateX( 0px ) rotate(6deg); z-index:27}
-	54% {-webkit-transform: translateX( 130% ) rotate(10deg); z-index:27}
-	55% {-webkit-transform: translateX( 130% ) rotate(10deg); z-index:19}	
-	67% {-webkit-transform: translateX( 0px ) rotate(6deg); z-index:19;}
-	100%  {-webkit-transform: translateX( 0px ) rotate(6deg); z-index:23;}
-	}	
-	
 #s0 {
-	
+	/*background:#f00;*/
 	position:absolute;
 	z-index:30;
-	-webkit-transform: translateX( 0px ) rotate(-10deg);
 	-webkit-backface-visibility: hidden;
-	-webkit-animation: mischia0 3.2s infinite ease-out forwards;
+	-webkit-animation: mischia0 1200ms 1000ms infinite ease;
+	/*test 1s 2s 3 alternate backwards*/
 }
 
 #s1 {
-	
+	/*background:#0f0;*/
 	position:absolute;
 	z-index:29;
 	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateX( 0px ) rotate(2deg);
-	-webkit-animation: mischia1 3.2s infinite ease-out forwards;
+	-webkit-animation: mischia1 1200ms 1600ms infinite ease;
+	/*-webkit-animation: mischia1zzz 0.8s infinite 1.2s linear;*/
 }
 
 #s2 {
-	
+	/*background:#00f;*/
 	position:absolute;
 	z-index:28;
-	-webkit-backface-visibility: hidden;
-	-webkit-transform: translateX( 0px ) rotate(-4deg);
-	-webkit-animation: mischia2 3.2s infinite ease-out forwards;
+	
 }
 
 #s3 {
-	
+	/*background:#0ff;*/
 	position:absolute;
 	z-index:27;
-	-webkit-transform: translateX( 0px ) rotate(6deg);
-	-webkit-backface-visibility: hidden;
-	-webkit-animation: mischia3 3.2s infinite ease-out forwards;
+	
 }
 
 #s4 {
 	position:absolute;
 	z-index:21;
+	
 }
 
 #s5 {
 	position:absolute;
 	z-index:20;
+	
 }
 
 #s6 {
@@ -766,6 +750,8 @@
 #s17 {
 	position:absolute;
 	z-index:8;
+	-webkit-backface-visibility: hidden;
+	-webkit-animation: mischia1r 1200ms 1600ms infinite ease;
 }
 
 #s18 {
@@ -781,6 +767,8 @@
 #s20 {
 	position:absolute;
 	z-index:5;
+	-webkit-backface-visibility: hidden;
+	-webkit-animation: mischia0r 1200ms 1000ms infinite ease;
 }
 
 #s21 {
@@ -887,9 +875,11 @@
 		background-size: 500% 100%;
 		background-position: 50% 0;
     }
+	
+	
 
     #cartaF .back {
-		background:url(img/arcani.jpg);
+		background: url(img/arcani1.jpg);
 		background-size:600% 600%;
 		background-repeat:no-repeat;
      	-webkit-transform: rotateY( 180deg );
@@ -1227,8 +1217,9 @@ $("<style type='text/css'> @-webkit-keyframes mischiat3	{	0% {-webkit-transform:
 									
 								});
 							}, 1000);
+								
 						}, 200);
-												
+											
 						
 				});
 			}		
@@ -1463,8 +1454,8 @@ $("<style type='text/css'> @-webkit-keyframes mischiat3	{	0% {-webkit-transform:
             
             <div class="hand spread">	
                 <div class="card suit1" id="s0"></div>
-                <div class="card suit2" id="s1"></div>
-                <div class="card suit3" id="s2"></div>
+                <div class="card suit3" id="s1"></div>
+                <div class="card suit1" id="s2"></div>
                 <div class="card suit4" id="s3"></div>
                 <div class="card suit1" id="s4"></div>
                 <div class="card suit2" id="s5"></div>
@@ -1479,7 +1470,7 @@ $("<style type='text/css'> @-webkit-keyframes mischiat3	{	0% {-webkit-transform:
                 <div class="card suit3" id="s14"></div>
                 <div class="card suit4" id="s15"></div>
                 <div class="card suit1" id="s16"></div>
-                <div class="card suit2" id="s17"></div>
+                <div class="card suit3" id="s17"></div>
                 <div class="card suit3" id="s18"></div>
                 <div class="card suit4" id="s19"></div>
                 <div class="card suit1" id="s20"></div>
