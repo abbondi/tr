@@ -993,10 +993,17 @@
 				
 			}
 			
-			$('.pagine').append('<div id="oracolo" class="pagina"><div id="contenitore-pergamena"></div></div>');
+			//$('.pagine').append('<div id="oracolo" class="pagina"><div id="contenitore-pergamena"></div></div>');
+			//$('<div id="oracolo" class="pagina"><div id="contenitore-pergamena"></div></div>').appendTo('.pagine');
+			if (indice==0) {
+				$('.pagine').append('<div id="oracolo" class="pagina"><div id="contenitore-pergamena"></div></div>');
+			} else {
+				$('#oracolo').css({'display':'block'});
+			}
+			
 			$('#contenitore-pergamena').css({'background-color':'#' + colore});
 			
-			$('#contenitore-pergamena').html('<div id="pergamena"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><div class="slide-inner">' + oracoliTxt[indice] + '<p>&nbsp;</p><p>&nbsp;</p></div></div></div></div><div class="swiper-scrollbar"></div></div>');
+			$('.pagine #contenitore-pergamena').html('<div id="pergamena"><div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><div class="slide-inner">' + oracoliTxt[indice] + '<p>&nbsp;</p><p>&nbsp;</p></div></div></div></div><div class="swiper-scrollbar"></div></div>');
 		
 					
 			// inizio codice swipe e scroll pages
@@ -1304,8 +1311,8 @@ $("<style type='text/css'> @-webkit-keyframes mischiat3	{	0% {-webkit-transform:
 
 		function homePage() {
 			//alert($('#pag1').html());
-			$('.pagine').html($('#pag1').html());
-				
+			//$('.pagine').html($('#pag1').html());
+			$('.pagine').html('<div id="home" class="pagina"><div id="main"><div class="segnaposto argomento" id="A1"><div class="icona"></div></div><div class="segnaposto argomento" id="A3"><div class="icona"></div></div><div class="segnaposto argomento" id="A2"><div class="icona"></div></div><div class="segnaposto argomento" id="A4"><div class="icona"></div></div><div class="segnaposto consiglio"><div class="icona"></div></div></div></div>');	
 			
 			$('.pagine #A1').addClass('A1in');
 			$('.pagine #A3').addClass('A3in');
@@ -1546,7 +1553,9 @@ $("<style type='text/css'> @-webkit-keyframes mischiat3	{	0% {-webkit-transform:
             </div>
            
         </div>
-        </div>
+        
+        <div id="oracolo" class="pagina" style="display:none;"><div id="contenitore-pergamena"></div></div>
+     </div>
     
     </div>
 </div>
